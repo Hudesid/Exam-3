@@ -85,8 +85,6 @@ class EmailListView(ListView):
 
 
 class SearchView(base.PostList, ListView):
-    model = models.Post
-    template_name = 'list.html'
     context_object_name = 'posts'
     paginate_by = 5
 
