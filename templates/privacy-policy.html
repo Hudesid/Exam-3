@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Privacy Policy{% endblock %}
+
+{% block content %}
+<section class="section-sm">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            {% for policy in policies %}
+               <div class="title-bordered mb-5 d-flex align-items-center">
+                  <h1 class="h4">{{ policy.comment }}</h1>
+               </div>
+                  <div class="content">
+                     <h4 id="responsibility-of-contributors">Responsibility of Contributors</h4>
+                     <p>{{ policy.responsibility_of_contributors }}</p>
+                     <h4 id="gathering-of-personal-information">Gathering of Personal Information</h4>
+                     <p>{{ policy.gathering_of_personal_information }}</p>
+                     <h4 id="protection-of--personal--information">Protection of Personal- Information</h4>
+                     <p>{{ policy.protection_of_personal_information }}</p>
+                     <h4 id="privacy-policy-changes">Privacy Policy Changes</h4>
+                     {% if policy.changes.count == 0 %}
+                           <h4 class="text-muted" style="text-align: center; margin-top: 50px">No changes yet</h4>
+                     {% else %}
+                     {% for changes in policy.changes.all %}
+                        <ol>
+                           <li>{{ changes }}</li>
+                        </ol>
+                     {% endfor %}
+                     {% endif %}
+                  </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

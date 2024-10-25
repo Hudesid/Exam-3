@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Hi, I Am John Doe{% endblock %}
+
+{% block content %}
+<section class="section-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				{% for about in abouts %}
+					<div class="title-bordered mb-5 d-flex align-items-center">
+						<h1 class="h4">{{ about.comment }}</h1>
+						<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
+							<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a>
+							</li>
+							<li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a>
+							</li>
+							<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a>
+							</li>
+							<li class="list-inline-item"><a href="#"><i class="ti-github"></i></a>
+							</li>
+						</ul>
+					</div>
+					<img src="{{ about.images.image.url }}" class="img-fluid w-100 mb-4 rounded-lg" alt="author">
+					<div class="content">
+						<p>{{ about.description }}</p>
+						<div class="quote"> <i class="ti-quote-left"></i>
+							<div>
+								<p>{{ about.quote }}</p> <span class="quote-by">- {{ about.quote_author }}</span>
+							</div>
+						</div>
+						<hr>
+						<h4 id="my-skills--experiences">My Skills &amp; Experiences:</h4>
+						<p>{{ about.my_skills_part1 }}</p>
+						{% for skill in about.my_skills.all %}
+							<ul>
+								<li>{{ skill }}</li>
+							</ul>
+						{% endfor %}
+						<p>{{ about.my_skills_part2 }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+	<div class="container">
+		<!-- Article Content -->
+		<article class="row mb-4">
+			<div class="col-lg-10 mx-auto mb-4">
+				<h1 class="h2 mb-3">{{ post.title }}</h1>
+				<ul class="list-inline post-meta mb-3" style="margin-left: 160px; margin-top: 30px;">
+					<li class="list-inline-item"><i class="ti-user mr-2"></i><a href="author.html">{{ post.poster }} </a></li>
+					<li class="list-inline-item">|&emsp;Date : {{ post.post_date }} </li>
+					<li class="list-inline-item">|&emsp;Categories :
+						{% for category in post.categories.all %}
+							<a href="#!" class="ml-1">{{ category }}{% if not forloop.last %}, {% endif %} </a>
+						{% endfor %}
+					</li>
+					<li class="list-inline-item">|&emsp;Tags :
+						{% for tag in post.tags.all %}
+							<a href="#!" class="ml-1">{{ tag }}{% if not forloop.last %}, {% endif %}</a>
+						{% endfor %}
+                    </li>
+				</ul>
+			</div>
+			<div class="col-12 mb-3">
+				<div class="post-slider">
+					{% for image in post.images.all %}
+                        <img loading="lazy" src="{{ image.image.url }}" class="img-fluid" alt="post-thumb">
+                    {% endfor %}
+                </div>
+			</div>
+			<div class="col-lg-10 mx-auto mb-4">
+				<div class="content">
+					{{ post.description }}
+				</div>
+			</div>
+		</article>
+	  		<!-- Add Comment Form -->
+		<div class="row mb-4">
+			<div class="col-lg-10 mx-auto mb-4">
+                <h3 class="mb-4"><strong>+</strong> Add a Comment</h3>
+				<form method="post">
+			        {% csrf_token %}
+                    {{ form.as_p }}
+					<button type="submit" class="btn btn-primary" style="margin-left: 835px">Send</button>
+				</form>
+			</div>
+		</div>
+
+      <!-- Comments Section -->
+      <div class="row mb-4">
+         <div class="col-lg-10 mx-auto mb-4">
+            <h3 class="mb-3">Comments</h3>
+            <div class="comments" style="margin-left: 35px;">
+				<div class="comment mb-4" style="margin-top: 30px;">
+					{% if post.comments.count == 0 %}
+						<h4 class="text-muted" style="text-align:center;">No comments yet</h4>
+					{% else %}
+						{% for comment in post.comments.all %}
+							<p>
+								<strong style="color: black">{{ comment.name }} </strong>
+								<span class="text-muted">| Email: {{ comment.email }}</span>
+								<span class="text-muted">| Date: {{ comment.send_date }}</span>
+							</p>
+							<p>{{ comment.comment }}</p>
+						{% endfor %}
+					{% endif %}
+			   </div>
+            </div>
+         </div>
+      </div>
+	</div>
+</section>
+{% endblock %}
