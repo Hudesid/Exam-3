@@ -7,7 +7,7 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" width="65">
 
 ### Project description
-Bu loyihada siz post qo'shsangiz bo'ladi. Post qo'shayotganigizda siz unga rasm, nomi sana va boshqa post haqida malumotlarni qo'shaolasiz va uni siz ro'yxatda ko'rsangiz bo'ladi. Qidirish tizimini ishlatish uchun siz postni nomini kotta harf bilan kiritishingiz kerak agar post nomi kotta bo'lsa. 
+Bu loyihada siz post qo'shsangiz bo'ladi. Post qo'shayotganigizda siz unga rasm, nomi sana va boshqa post haqida malumotlarni qo'shaolasiz va uni siz ro'yxatda ko'rsangiz bo'ladi.
 
 Eslatma:
 
